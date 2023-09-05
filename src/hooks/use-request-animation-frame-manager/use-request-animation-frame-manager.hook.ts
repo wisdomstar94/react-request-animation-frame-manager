@@ -56,6 +56,13 @@ export function useRequestAnimationFrameManager(props: IUseRequestAnimationFrame
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady]);
 
+  useEffect(() => {
+    return () => {
+      stop();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return {
     isReady,
     isProcessing,

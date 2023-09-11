@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function Page() {
   const [count, setCount] = useState<number>(0);
 
-  useRequestAnimationFrameManager({
+  const requestAnimationFrameManager = useRequestAnimationFrameManager({
     isAutoStart: true,
     callback(startedTimestamp, currentTimestamp, step) {
       console.log('@step', step);
@@ -26,6 +26,16 @@ export default function Page() {
   return (
     <>
       console 창을 확인해보세요.
+      <div>
+        <button onClick={() => {
+          requestAnimationFrameManager.stop();
+        }}>멈추기</button>
+      </div>
+      <div>
+        <button onClick={() => {
+          requestAnimationFrameManager.start();
+        }}>다시 실행</button>
+      </div>
     </>
   );
 }

@@ -26,9 +26,7 @@ export function useRequestAnimationFrameManager(props: IUseRequestAnimationFrame
 
     const call = (step: number) => {
       callbackRef.current(nowTimestamp, window.performance.timeOrigin + window.performance.now(), step);
-      if (isProcessingRef.current) {
-        requestAnimationFrame(call);
-      }
+      requestRef.current = requestAnimationFrame(call);
     };
 
     requestRef.current = requestAnimationFrame(call);
